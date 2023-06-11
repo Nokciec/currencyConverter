@@ -18,9 +18,9 @@ public class Main {
     }
     public static String[] argsForDebug() {
         String[] arg = new String [3];
-        arg[0] = "CAD";
-        arg[1] = "JPY";
-        arg[2] = "17.50";
+        arg[0] = "17.50";
+        arg[1] = "CAD";
+        arg[2] = "JPY";
         return arg;
     }
 }

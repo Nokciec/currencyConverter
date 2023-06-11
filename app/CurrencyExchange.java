@@ -42,21 +42,21 @@ public class CurrencyExchange {
 
         //straightforward exchange
         for (FXratio fXratio : fxRatios) {
-            if (fXratio.getBaseCurrency().equals(args[0]) && fXratio.getFinalCurrency().equals(args[1])) {
-                return (Double.parseDouble(args[2]) * fXratio.getRate());
+            if (fXratio.getBaseCurrency().equals(args[1]) && fXratio.getFinalCurrency().equals(args[2])) {
+                return (Double.parseDouble(args[0]) * fXratio.getRate());
             }
         }
 
         //forwarded exchange
         double midValue = 0.0;
         for (FXratio ratio : fxRatios) {
-            if (ratio.getBaseCurrency().equals(args[0]) && ratio.getFinalCurrency().equals("USD")) {
-                midValue = Double.parseDouble(args[2]) * ratio.getRate();
+            if (ratio.getBaseCurrency().equals(args[1]) && ratio.getFinalCurrency().equals("USD")) {
+                midValue = Double.parseDouble(args[0]) * ratio.getRate();
             }
         }
 
         for (FXratio fxRatio : fxRatios) {
-            if (fxRatio.getBaseCurrency().equals("USD") && fxRatio.getFinalCurrency().equals(args[1])) {
+            if (fxRatio.getBaseCurrency().equals("USD") && fxRatio.getFinalCurrency().equals(args[2])) {
                 return (midValue * fxRatio.getRate());
             }
         }
