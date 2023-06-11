@@ -1,0 +1,72 @@
+[
+  {
+    "from" : "PLN",
+    "to" : "USD",
+    "rate" : "0.2421256"
+  },
+  {
+    "from" : "USD",
+    "to" : "PLN",
+    "rate" : "4.130088"
+  },
+  {
+    "from" : "EUR",
+    "to" : "USD",
+    "rate" : "1.0753498"
+  },
+  {
+    "from" : "USD",
+    "to" : "EUR",
+    "rate" : "0.92993"
+  },
+  {
+    "from" : "CAD",
+    "to" : "USD",
+    "rate" : "0.748009"
+  },
+  {
+    "from" : "USD",
+    "to" : "CAD",
+    "rate" : "1.336883"
+  },
+  {
+    "from" : "AUD",
+    "to" : "USD",
+    "rate" : "0.67425"
+  },
+  {
+    "from" : "USD",
+    "to" : "AUD",
+    "rate" : "1.483129"
+  },
+  {
+    "from" : "JPY",
+    "to" : "USD",
+    "rate" : "0.0071739"
+  },
+  {
+    "from" : "USD",
+    "to" : "JPY",
+    "rate" : "139.395"
+  },
+  {
+    "from" : "CNY",
+    "to" : "USD",
+    "rate" : "0.14028"
+  },
+  {
+    "from" : "USD",
+    "to" : "CNY",
+    "rate" : "7.1286"
+  },
+  {
+    "from" : "GBP",
+    "to" : "USD",
+    "rate" : "1.2570505"
+  },
+  {
+    "from" : "USD",
+    "to" : "GBP",
+    "rate" : "0.795513"
+  }
+]
