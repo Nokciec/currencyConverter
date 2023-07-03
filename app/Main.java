@@ -13,13 +13,8 @@ public class Main {
         String exchangedFinalCurrency = args[2];
 
         DataLoader dl = new DataLoader();
-        dl.loadCurrencyExchangeRatios();
+        dl.loadCurrencyExchangeRatiosFromFile();
 
-        if (dl.isStraighforwardExchangePossible(exchangedBaseCurrency,exchangedFinalCurrency)){
-
-        }else {
-
-        }
         CurrencyExchange ce = new CurrencyExchange();
         double result = ce.exchangeCurrency(exchangedAmount,exchangedBaseCurrency,exchangedFinalCurrency, dl.fxRatios);
 

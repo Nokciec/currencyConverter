@@ -12,28 +12,61 @@ public class CurrencyExchange {
 
     public double exchangeCurrency(Double amount, String baseCurrency, String finalCurrency, ArrayList<FXratio> exchangeRatios) {
 
-        //straightforward exchange
+        if (isStraightforwardExchangePossible(baseCurrency, finalCurrency, exchangeRatios))
+        {
+            return straightforwardExchange(amount, baseCurrency, finalCurrency, exchangeRatios);
+        }
+        else if (isForwardExchangePossible(baseCurrency, finalCurrency, exchangeRatios))
+        {
+            return forwardExchange(amount, baseCurrency, finalCurrency, exchangeRatios);
+        }
+
+        System.out.println("Exchange impossible, no exchange data");
+        return -1;
+    }
+
+    private boolean isStraightforwardExchangePossible(String currency1, String currency2, ArrayList<FXratio> exchangeRatios){
+        for (FXratio fXratio : exchangeRatios) {
+            if (fXratio.getBaseCurrency().equals(currency1) && fXratio.getFinalCurrency().equals(currency2)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isForwardExchangePossible(String currency1, String currency2, ArrayList<FXratio> exchangeRatios){
+
+        for (FXratio ratio : exchangeRatios) {
+            if (ratio.getBaseCurrency().equals(currency1) && ratio.getFinalCurrency().equals("USD")) {
+                for (FXratio fxRatio2 : exchangeRatios) {
+                    if (fxRatio2.getBaseCurrency().equals("USD") && fxRatio2.getFinalCurrency().equals(currency2)) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    private double straightforwardExchange(Double amount, String baseCurrency, String finalCurrency, ArrayList<FXratio> exchangeRatios){
         for (FXratio fXratio : exchangeRatios) {
             if (fXratio.getBaseCurrency().equals(baseCurrency) && fXratio.getFinalCurrency().equals(finalCurrency)) {
                 return (amount * fXratio.getRate());
             }
         }
+        return -1;
+    }
 
-        //forwarded exchange
-        double midValue = 0.0;
+    private double forwardExchange(Double amount, String baseCurrency, String finalCurrency, ArrayList<FXratio> exchangeRatios){
         for (FXratio ratio : exchangeRatios) {
             if (ratio.getBaseCurrency().equals(baseCurrency) && ratio.getFinalCurrency().equals("USD")) {
-                midValue = amount * ratio.getRate();
+                for (FXratio fxRatio2 : exchangeRatios) {
+                    if (fxRatio2.getBaseCurrency().equals("USD") && fxRatio2.getFinalCurrency().equals(finalCurrency)) {
+                        return (amount * ratio.getRate() * fxRatio2.getRate());
+                    }
+                }
             }
         }
-
-        for (FXratio fxRatio : exchangeRatios) {
-            if (fxRatio.getBaseCurrency().equals("USD") && fxRatio.getFinalCurrency().equals(finalCurrency)) {
-                return (midValue * fxRatio.getRate());
-            }
-        }
-
         return -1;
-
     }
 }

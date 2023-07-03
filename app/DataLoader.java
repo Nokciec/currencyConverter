@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class DataLoader {
 
     ArrayList<FXratio> fxRatios = new ArrayList<>();
-    public void loadCurrencyExchangeRatios() throws FileNotFoundException {
+    public boolean loadCurrencyExchangeRatiosFromFile() throws FileNotFoundException {
         //getting the ratios from config file
         String file = "C:\\currConv\\config.json";
         Scanner scanner = new Scanner(new File(file));
@@ -34,15 +34,14 @@ public class DataLoader {
                     lineReadingCounter = 0;
                 }
             }
-        }
 
-    }
-    public boolean isStraighforwardExchangePossible(String currency1, String currency2){
-        for (FXratio fXratio : fxRatios) {
-            if (fXratio.getBaseCurrency().equals(currency1) && fXratio.getFinalCurrency().equals(currency2)) {
-                return true;
-            }
         }
+        if (fxRatios.size() > 0)
+        {
+            return true;
+        }
+        System.out.println("Bad config file.");
         return false;
+
     }
 }
