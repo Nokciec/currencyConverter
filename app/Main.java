@@ -8,11 +8,20 @@ public class Main {
         // DEBUG - Help during development.
         if (args.length == 0) args = argsForDebug();
 
+        Double exchangedAmount = Double.parseDouble(args[0]);
+        String exchangedBaseCurrency = args[1];
+        String exchangedFinalCurrency = args[2];
+
+        DataLoader dl = new DataLoader();
+        dl.loadCurrencyExchangeRatios();
+
+        if (dl.isStraighforwardExchangePossible(exchangedBaseCurrency,exchangedFinalCurrency)){
+
+        }else {
+
+        }
         CurrencyExchange ce = new CurrencyExchange();
-
-        ce.loadCurrencyExchangeRatios();
-
-        double result = ce.exchangeCurrency(args);
+        double result = ce.exchangeCurrency(exchangedAmount,exchangedBaseCurrency,exchangedFinalCurrency, dl.fxRatios);
 
         System.out.printf("%.2f%n",result);
     }

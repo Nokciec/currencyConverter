@@ -1,5 +1,15 @@
 package app;
-public class FXratio {
+public final class FXratio {
+    private final String baseCurrency;
+    private final String finalCurrency;
+    private final Double rate;
+
+
+    public FXratio(String from, String to, Double rate) {
+        this.baseCurrency = from;
+        this.finalCurrency = to;
+        this.rate = rate;
+    }
 
     public String getBaseCurrency() {
         return baseCurrency;
@@ -13,13 +23,6 @@ public class FXratio {
         return rate;
     }
 
-    private final String baseCurrency;
-    private final String finalCurrency;
-    private final Double rate;
 
-    public FXratio(String from, String to, Double rate) {
-        this.baseCurrency = from;
-        this.finalCurrency = to;
-        this.rate = rate;
-    }
+
 }
